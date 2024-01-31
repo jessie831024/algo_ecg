@@ -34,9 +34,21 @@ install this package
 pip install -e . 
 ```
 
+## Teaching schedule 
 
+### Week 1: 
+- Data exploration 
+- Feature engineering 
+- Initial pipeline setup 
 
+### Week 2: 
+- Logistic regression gradient descent
+- Support vector machine gradient descent
+- Ensemble methods like random forest (?)
 
-
+### Week 3: 
+- Hyperparameter tuning 
+- Classifier comparison
+- Deep learning (?)
 
 
