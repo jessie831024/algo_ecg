@@ -143,4 +143,5 @@ def import_physionet_data(
         pids_chunked.append(np.repeat(pp, len(new_chunks)))
     X_chunked = np.array(X_chunked)
     y_chunked = np.concatenate(y_chunked)
-    return X_chunked, y_chunked
+    pid_chunked = np.concatenate(pids_chunked)
+    return X_chunked, y_chunked, pid_chunked 

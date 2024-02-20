@@ -9,7 +9,10 @@ install_requires = [
     'scikit-learn',
     'jupyterlab',
     'ipykernel',
-    'wget'
+    'wget',
+    'seaborn'
+    'plotly',
+    'statsmodels'
 ]
 
 setup(

@@ -55,6 +55,23 @@ def preprocess(X):
             logger.debug('i={}: {} outliers found'.format(i, num_outliers))
         x_proc, flipped = flip_values(x_proc)
         if flipped:
-            logger.debug('i={}: flipped values'.format(i, num_outliers))
+            logger.debug('i={}: flipped values'.format(i))
         X_proc.append(x_proc)
     return X_proc
+
+
+def preprocess_pid(X, pids):
+    X_proc = []
+    for i, x_proc in enumerate(X):
+        # logger.debug('Processing X[{}]'.format(i))
+        if not check_bounds(x_proc):
+            logger.debug('i={}, pid={}: check bounds failed'.format(i, pids[i]))
+        x_proc, num_outliers = remove_outliers(x_proc)
+        if num_outliers:
+            logger.debug('i={}, pid={}: {} outliers found'.format(i, pids[i], num_outliers))
+        x_proc, flipped = flip_values(x_proc)
+        if flipped:
+            logger.debug('i={}, pid={}: flipped values'.format(i, pids[i]))
+        X_proc.append(x_proc)
+    return X_proc, pids
+
