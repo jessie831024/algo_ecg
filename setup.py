@@ -10,7 +10,7 @@ install_requires = [
     'jupyterlab',
     'ipykernel',
     'wget',
-    'seaborn'
+    'seaborn',
     'plotly',
     'statsmodels'
 ]
