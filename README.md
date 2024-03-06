@@ -36,15 +36,15 @@ pip install -e .
 
 ## Teaching schedule 
 
-### Week 1: 
+### [Week 1](https://github.com/jessie831024/algo_ecg/blob/main/reading/w1.md): 
 - Data exploration 
 - Feature engineering 
 - Initial pipeline setup 
 
-### Week 2: 
+### [Week 2](https://github.com/jessie831024/algo_ecg/blob/main/reading/w2.md): 
 - Logistic regression gradient descent
 - Support vector machine gradient descent
-- Ensemble methods like random forest (?)
+- Decision tree & random forest
 
 ### Week 3: 
 - Hyperparameter tuning 
