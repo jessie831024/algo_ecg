@@ -12,7 +12,8 @@ install_requires = [
     'wget',
     'seaborn',
     'plotly',
-    'statsmodels'
+    'statsmodels',
+    'xgboost'
 ]
 
 setup(
