@@ -129,7 +129,7 @@ if __name__ == "__main__":
     X_test = pd.DataFrame.from_records(X_test)
 
     parser = argparse.ArgumentParser()
-    parser.add_argument("run", choices=['run_lr', 'run_xgb', 'run_svc'])
+    parser.add_argument("run", choices=['run_lr', 'run_lr_halving', 'run_xgb', 'run_svc'])
     args = parser.parse_args()
 
     my_pipe = hyperparameter_options[args.run]['my_pipe']
