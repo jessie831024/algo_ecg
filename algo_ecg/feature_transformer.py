@@ -158,9 +158,6 @@ def select_cols (X, col_names):
     return X[col_names]
 
 
-
-    
-
 class AllFeatureCustomTransformer(BaseEstimator, TransformerMixin):
     
     def __init__(self, axis=1):
@@ -172,30 +169,30 @@ class AllFeatureCustomTransformer(BaseEstimator, TransformerMixin):
         X = X.apply(generate_time_fre_domain_features, self.axis) 
         return X
 
-
-class FindPeaksCustomTransformer(BaseEstimator, TransformerMixin):
+class RemoveCorrelatedFeatures(BaseEstimator, TransformerMixin):
     
-    def __init__(self, axis=1):
-        self.axis = axis
+    def __init__(self, threshold=0.9):
+        self.threshold = threshold
+        self.correlation_matrix = None
+        self.features_to_drop = []
+
     def fit(self, X, y=None):
+        # Compute the correlation matrix
+        self.correlation_matrix = X.corr()
+
+        # Identify features with high correlation
+        upper_triangle = np.triu(np.ones(self.correlation_matrix.shape), k=1)
+        correlated_features = np.where(np.abs(self.correlation_matrix) > self.threshold * upper_triangle)
+
+        # Create a set of unique features to drop
+        self.features_to_drop = set()
+        for feature1, feature2 in zip(*correlated_features):
+            if feature1 != feature2:
+                self.features_to_drop.add(feature2)
+
         return self
 
     def transform(self, X, y=None):
-        X = X.apply(calculate_hrv_based_on_peak_intervals, self.axis) 
-        X_features_only = X[['avg_nni',	'std_nni',	'rmssd',	'rmssd_nn',	'pnn70']]
-        return X_features_only
-
-
-class SliceCustomTransformer(BaseEstimator, TransformerMixin):
-    
-    def __init__(self, slice_length=9000):
-        self.slice_length = slice_length
-    def fit(self, X, y=None):
-        return self
-
-    def transform(self, X, y=None):
-        # Perform arbitary transformation
-        X_slice = np.concatenate(X).reshape(-1, self.slice_length, 1)
-        X_slice_pd = pd.DataFrame.from_records(X_slice)
-        
-        return X_slice_pd
+        # Drop the highly correlated features
+        X_transformed = X.drop(columns=list(self.features_to_drop), errors='ignore')
+        return X_transformed
