@@ -46,7 +46,7 @@ pip install -e .
 - Support vector machine gradient descent
 - Decision tree & random forest
 
-### Week 3: 
+### [Week 3](https://github.com/jessie831024/algo_ecg/blob/main/reading/w3.md): 
 - Hyperparameter tuning 
 - Classifier comparison
 - Deep learning (?)
