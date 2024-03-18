@@ -47,8 +47,12 @@ pip install -e .
 - Decision tree & random forest
 
 ### [Week 3](https://github.com/jessie831024/algo_ecg/blob/main/reading/w3.md): 
-- Hyperparameter tuning 
-- Classifier comparison
-- Deep learning (?)
+- Hyperparameter tuning & Classifier comparison
+- Deep learning 
+  - Feedforward 
+  - Convolutional neural network 
+  - Recurrent neural network
+- Detecting AFib using photoplethysmography data ([paper](https://arxiv.org/abs/1807.10707))
+
 
 
